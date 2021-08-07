@@ -2,12 +2,7 @@
 // Copyright (c) Drastic Actions. All rights reserved.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Foundation;
 using Microsoft.Maui;
-using UIKit;
 
 namespace Mauidon
 {
@@ -17,12 +12,14 @@ namespace Mauidon
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate<Startup>
     {
+        /// <inheritdoc/>
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
              global::Xamarin.Auth.Presenters.XamarinIOS.AuthenticationConfiguration.Init();
              return base.FinishedLaunching(app, options);
         }
 
+        /// <inheritdoc/>
         public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
         {
             var mapp = MauiUIApplicationDelegate.Current.Application as App;
