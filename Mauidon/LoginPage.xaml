@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Mauidon.LoginPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resources="clr-namespace:Mauidon.Translations"
+             xmlns:local="clr-namespace:Mauidon">
+    <StackLayout VerticalOptions="CenterAndExpand">
+        <StackLayout>
+            <Label FontSize="Title" HorizontalOptions="Center" Text="Mauidon"></Label>
+            <Image
+             VerticalOptions="Center"
+             HorizontalOptions="Center"
+             Source="logo.png"></Image>
+        </StackLayout>
+        <StackLayout Margin="15">
+            <Entry Keyboard="Email"
+               Placeholder="{x:Static resources:Common.ServerName}"
+               IsTextPredictionEnabled="False"
+               IsSpellCheckEnabled="False"
+               Text="{Binding ServerBaseUrl}" />
+            <Button
+                Style="{StaticResource PrimaryButtonStyle}"
+                Command="{Binding StartLoginCommand}"
+                Text="{x:Static resources:Common.LoginButton}"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

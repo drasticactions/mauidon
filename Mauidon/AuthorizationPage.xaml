@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Mauidon.AuthorizationPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resources="clr-namespace:Mauidon.Translations"
+             
+             xmlns:local="clr-namespace:Mauidon">
+    <StackLayout>
+        <Grid Margin="15, 7, 15, 0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="{x:Static resources:Common.NewAccount}" FontSize="16"  FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" />
+
+            <Button x:Name="dismissButton" Text="{x:Static resources:Common.CloseButton}" FontSize="16" FontAttributes="Bold"
+                        Command="{Binding CloseDialogCommand}" HorizontalOptions="Start" Grid.Row="0" Grid.Column="0">
+            </Button>
+        </Grid>
+        <Grid VerticalOptions="StartAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+            </Grid.RowDefinitions>
+            <Image Aspect="AspectFill" Source="{Binding Account.HeaderUrl}" />
+            <Image HeightRequest="100" HorizontalOptions="Center" Source="{Binding Account.AvatarUrl}" TranslationY="50" VerticalOptions="End" WidthRequest="100" />
+            <StackLayout Grid.Row="1" Padding="0,50,0,00" HorizontalOptions="Center">
+                <Label Style="{StaticResource ProfileNameLabel}" Text="{Binding Account.DisplayName}" />
+                <Label Margin="0,-5" Style="{StaticResource ProfileTagLabel}" Text="{Binding Account.AccountName, Converter={StaticResource AddAtSignConverter}}" />
+            </StackLayout>
+            <Grid Grid.Row="2" Margin="0,30" ColumnSpacing="0" RowSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout>
+                    <Label Style="{StaticResource StatsNumberLabel}" Text="{Binding Account.StatusesCount}" />
+                    <Label Style="{StaticResource StatsCaptionLabel}" Text="{x:Static resources:Common.Status}" />
+                </StackLayout>
+
+                <StackLayout Grid.Column="1">
+                    <Label Style="{StaticResource StatsNumberLabel}" Text="{Binding Account.FollowingCount}" />
+                    <Label Style="{StaticResource StatsCaptionLabel}" Text="{x:Static resources:Common.Following}" />
+                </StackLayout>
+
+                <StackLayout Grid.Column="2">
+                    <Label Style="{StaticResource StatsNumberLabel}" Text="{Binding Account.FollowersCount}" />
+                    <Label Style="{StaticResource StatsCaptionLabel}" Text="{x:Static resources:Common.Followers}" />
+                </StackLayout>
+            </Grid>
+            <Label Margin="20,0" Grid.Row="3" Style="{StaticResource MainBodyLabel}" Text="{Binding Account.Note}" />
+        </Grid>
+        <StackLayout Margin="0,0,0,20" VerticalOptions="End"
+                    HorizontalOptions="FillAndExpand">
+            <Button Margin="5,0,5,0"
+                    Command="{Binding StartLoginCommand}"
+                    Style="{DynamicResource PrimaryButtonStyle}"
+                    Text="{x:Static resources:Common.LoginButton}"/>
+            <Button Text="{x:Static resources:Common.CloseButton}" Margin="5,0,5,0"
+                    Command="{Binding CloseDialogCommand}"  
+                    Style="{DynamicResource DenyButtonStyle}">
+            </Button>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
