@@ -30,6 +30,7 @@ namespace Mauidon
                     services.AddSingleton<IMastoContext, MastoContext>();
                     services.AddSingleton<INavigationService, NavigationService>();
                     services.AddSingleton<IAuthorizationService, AuthorizationService>();
+                    services.AddSingleton<IErrorHandlerService, ErrorHandlerService>();
                     services.AddTransient<HomeTootViewModel>();
                     services.AddTransient<AuthorizationPageViewModel>();
                     services.AddTransient<LoginPageViewModel>();

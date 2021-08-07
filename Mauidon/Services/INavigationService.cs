@@ -12,6 +12,14 @@ namespace Mauidon.Services
     public interface INavigationService
     {
         /// <summary>
+        /// Display Alert to User.
+        /// </summary>
+        /// <param name="title">Title of message.</param>
+        /// <param name="message">Message to user.</param>
+        /// <returns>A <see cref="Task"/>.</returns>
+        Task DisplayAlertAsync(string title, string message);
+
+        /// <summary>
         /// Replace Main Page In Window.
         /// </summary>
         /// <param name="page"><see cref="Page"/> to navigate to.</param>

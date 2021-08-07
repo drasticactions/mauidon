@@ -3,6 +3,7 @@
 // </copyright>
 
 using Microsoft.Maui.Controls;
+using Microsoft.Maui.Essentials;
 
 namespace Mauidon.Services
 {
@@ -11,6 +12,13 @@ namespace Mauidon.Services
     /// </summary>
     public class NavigationService : INavigationService
     {
+        /// <inheritdoc/>
+        public Task DisplayAlertAsync(string title, string message)
+        {
+            MainThread.BeginInvokeOnMainThread(async () => await App.Current.MainPage.DisplayAlert(title, message, Translations.Common.CloseButton).ConfigureAwait(false));
+            return Task.CompletedTask;
+        }
+
         /// <inheritdoc/>
         public Task PopModalPageInWindowAsync(Window window)
         {

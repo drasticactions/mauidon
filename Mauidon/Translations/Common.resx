@@ -120,6 +120,13 @@
   <data name="CloseButton" xml:space="preserve">
     <value>Close</value>
   </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>An {0} has occured: {1} @ {2}</value>
+    <comment>{0} is the name of the exception, {1} is the exception message and {2} is the stack.</comment>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
   <data name="Followers" xml:space="preserve">
     <value>Followers</value>
   </data>

@@ -70,6 +70,24 @@ namespace Mauidon.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An {0} has occured: {1} @ {2}.
+        /// </summary>
+        internal static string ErrorMessage {
+            get {
+                return ResourceManager.GetString("ErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string ErrorTitle {
+            get {
+                return ResourceManager.GetString("ErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Followers.
         /// </summary>
         internal static string Followers {
