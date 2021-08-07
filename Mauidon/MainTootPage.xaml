@@ -16,10 +16,10 @@
                             <ColumnDefinition Width="50"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Image VerticalOptions="Start" Grid.Column="0" Source="{Binding Account.AvatarUrl}"/>
+                        <Image VerticalOptions="Start" HeightRequest="50" Grid.Column="0" Source="{Binding Account.AvatarUrl}"/>
                         <Grid x:Name="StatusGrid" Margin="0" Grid.Column="1">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="20"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0">
