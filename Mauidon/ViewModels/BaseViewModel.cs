@@ -2,7 +2,9 @@
 // Copyright (c) Drastic Actions. All rights reserved.
 // </copyright>
 
+using Mauidon.Context;
 using Mauidon.Services;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.Controls;
 
 namespace Mauidon.ViewModels
@@ -17,15 +19,14 @@ namespace Mauidon.ViewModels
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseViewModel"/> class.
         /// </summary>
-        /// <param name="navigationService">INavigationService.</param>
-        public BaseViewModel()
+        /// <param name="services">IServiceProvider.</param>
+        public BaseViewModel(IServiceProvider services)
         {
+            this.Services = services;
+            this.Navigation = services.GetService<INavigationService>();
+            this.Authorization = services.GetService<IAuthorizationService>();
+            this.Database = services.GetService<IMastoContext>();
         }
-
-        /// <summary>
-        /// Gets or sets the Close Dialog Command.
-        /// </summary>
-        public Command CloseDialogCommand { get; set; }
 
         /// <summary>
         /// Gets or Sets a value indicating whether the view is busy.
@@ -43,6 +44,31 @@ namespace Mauidon.ViewModels
                 this.OnPropertyChanged("IsBusy");
             }
         }
+
+        /// <summary>
+        /// Gets or sets the Close Dialog Command.
+        /// </summary>
+        public Command CloseDialogCommand { get; set; }
+
+        /// <summary>
+        /// Gets the service provider collection.
+        /// </summary>
+        protected IServiceProvider Services { get; private set; }
+
+        /// <summary>
+        /// Gets the navigation service.
+        /// </summary>
+        protected INavigationService Navigation { get; private set; }
+
+        /// <summary>
+        /// Gets the authorization service.
+        /// </summary>
+        protected IAuthorizationService Authorization { get; private set; }
+
+        /// <summary>
+        /// Gets the database service.
+        /// </summary>
+        protected IMastoContext Database { get; private set; }
 
         /// <summary>
         /// Load VM Async.

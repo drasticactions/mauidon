@@ -15,8 +15,6 @@ namespace Mauidon.ViewModels
     /// </summary>
     public class TootBaseViewModel : BaseViewModel
     {
-        private readonly IMastoContext db;
-
         private MastoUserAccount account;
         private MastodonList<Status> timeline;
         private TimelineType timelineType;
@@ -24,13 +22,13 @@ namespace Mauidon.ViewModels
         /// <summary>
         /// Initializes a new instance of the <see cref="TootBaseViewModel"/> class.
         /// </summary>
-        /// <param name="db">IMastoContext.</param>
+        /// <param name="service">IServiceProvider.</param>
         /// <param name="timelineType">TimelineType.</param>
-        public TootBaseViewModel(IMastoContext db, TimelineType timelineType)
+        public TootBaseViewModel(IServiceProvider service, TimelineType timelineType)
+            : base(service)
         {
-            this.db = db;
             this.timelineType = timelineType;
-            this.Account = this.db.GetDefaultAccount();
+            this.Account = this.Database.GetDefaultAccount();
         }
 
         /// <summary>

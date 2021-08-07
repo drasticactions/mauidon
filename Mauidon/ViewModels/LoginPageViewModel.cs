@@ -12,17 +12,15 @@ namespace Mauidon.ViewModels
     /// </summary>
     public class LoginPageViewModel : BaseViewModel
     {
-        private readonly IAuthorizationService authService;
-
         private string serverBaseUrl = "mastodon.social";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginPageViewModel"/> class.
         /// </summary>
-        /// <param name="authorizationService">Authorization Service.</param>
-        public LoginPageViewModel(IAuthorizationService authorizationService)
+        /// <param name="services">IServiceProvider.</param>
+        public LoginPageViewModel(IServiceProvider services)
+            : base(services)
         {
-            this.authService = authorizationService;
             this.StartLoginCommand = new Command(
                 async () => await this.ExecuteStartLoginCommand(),
                 () => !string.IsNullOrEmpty(this.ServerBaseUrl));
@@ -50,7 +48,7 @@ namespace Mauidon.ViewModels
         {
             if (!string.IsNullOrEmpty(this.ServerBaseUrl))
             {
-                await this.authService.SetupLogin(this.ServerBaseUrl);
+                await this.Authorization.SetupLogin(this.ServerBaseUrl);
             }
         }
     }

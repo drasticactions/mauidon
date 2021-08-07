@@ -17,10 +17,6 @@ namespace Mauidon.ViewModels
     /// </summary>
     public class AuthorizationPageViewModel : BaseViewModel
     {
-        private readonly IServiceProvider service;
-        private readonly IAuthorizationService authService;
-        private readonly INavigationService navigationService;
-        private readonly IMastoContext db;
         private MastodonClient client;
         private Account account;
 
@@ -28,15 +24,9 @@ namespace Mauidon.ViewModels
         /// Initializes a new instance of the <see cref="AuthorizationPageViewModel"/> class.
         /// </summary>
         /// <param name="services">IServiceProvider.</param>
-        /// <param name="db">IMastroContext.</param>
-        /// <param name="navigation">INavigationService.</param>
-        /// <param name="authorizationService">IAuthorizationService.</param>
-        public AuthorizationPageViewModel(IServiceProvider services, IMastoContext db, INavigationService navigation, IAuthorizationService authorizationService)
+        public AuthorizationPageViewModel(IServiceProvider services)
+            : base(services)
         {
-            this.service = services;
-            this.db = db;
-            this.authService = authorizationService;
-            this.navigationService = navigation;
             this.StartLoginCommand = new Command(
                 async () => await this.SaveAndLoginAsync(),
                 () => true);
@@ -69,7 +59,7 @@ namespace Mauidon.ViewModels
             }
 
             this.IsBusy = true;
-            (this.client, this.Account) = await this.authService.LoginWithCodeAsync(code);
+            (this.client, this.Account) = await this.Authorization.LoginWithCodeAsync(code);
             this.IsBusy = false;
         }
 
@@ -80,7 +70,7 @@ namespace Mauidon.ViewModels
         public async Task SaveAndLoginAsync()
         {
             this.IsBusy = true;
-            this.db.AddAccount(new Models.MastoUserAccount()
+            this.Database.AddAccount(new Models.MastoUserAccount()
             {
                 AccountId = this.account.Id,
                 Account = this.account,
@@ -90,8 +80,8 @@ namespace Mauidon.ViewModels
                 UserAuth = UserAuth.GenerateUserAuth(this.account.Id, this.client.AuthToken),
             });
             this.IsBusy = false;
-            this.navigationService.ReplaceMainPageInMainWindow(new MainTootPage(this.service));
-            await this.navigationService.PopModalPageInMainWindowAsync();
+            this.Navigation.ReplaceMainPageInMainWindow(this.Services.GetService<MainTootPage>());
+            await this.Navigation.PopModalPageInMainWindowAsync();
         }
     }
 }

@@ -16,9 +16,9 @@ namespace Mauidon.ViewModels
         /// <summary>
         /// Initializes a new instance of the <see cref="HomeTootViewModel"/> class.
         /// </summary>
-        /// <param name="db">IMastoContext.</param>
-        public HomeTootViewModel(IMastoContext db)
-            : base(db, TimelineType.Home)
+        /// <param name="service">IServiceProvider.</param>
+        public HomeTootViewModel(IServiceProvider service)
+            : base(service, TimelineType.Home)
         {
         }
     }
