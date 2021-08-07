@@ -2,7 +2,7 @@
 // Copyright (c) Drastic Actions. All rights reserved.
 // </copyright>
 
-namespace Mauidon.Tools
+namespace Mauidon
 {
     /// <summary>
     /// Timeline Type.
