@@ -2,6 +2,7 @@
 // Copyright (c) Drastic Actions. All rights reserved.
 // </copyright>
 
+using Mauidon.Tools;
 using Mauidon.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui;
@@ -34,14 +35,7 @@ namespace Mauidon
             this.InitializeComponent();
             this.code = code;
             this.BindingContext = this.vm = services.GetService<AuthorizationPageViewModel>();
+            this.vm?.LoginViaCodeAsync(this.code).FireAndForgetSafeAsync();
         }
-
-        /// <inheritdoc/>
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-            await this.vm?.LoginViaCodeAsync(this.code);
-        }
-
     }
 }

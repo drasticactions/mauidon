@@ -52,9 +52,9 @@ namespace Mauidon.ViewModels
         }
 
         /// <summary>
-        /// Gets or sets the Close Dialog Command.
+        /// Gets the Close Dialog Command.
         /// </summary>
-        public AsyncCommand CloseDialogCommand { get; set; }
+        public AsyncCommand CloseDialogCommand { get; private set; }
 
         /// <summary>
         /// Gets the service provider collection.

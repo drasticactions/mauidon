@@ -7,6 +7,7 @@ using Mastonet.Entities;
 using Mauidon.Context;
 using Mauidon.Models;
 using Mauidon.Services;
+using Mauidon.Tools;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.Controls;
 
@@ -27,9 +28,10 @@ namespace Mauidon.ViewModels
         public AuthorizationPageViewModel(IServiceProvider services)
             : base(services)
         {
-            this.StartLoginCommand = new Command(
+            this.StartLoginCommand = new AsyncCommand(
                 async () => await this.SaveAndLoginAsync(),
-                () => true);
+                () => true,
+                this.Error);
         }
 
         /// <summary>
@@ -42,9 +44,9 @@ namespace Mauidon.ViewModels
         }
 
         /// <summary>
-        /// Gets or sets the Start Login Command.
+        /// Gets the Start Login Command.
         /// </summary>
-        public Command StartLoginCommand { get; set; }
+        public AsyncCommand StartLoginCommand { get; private set; }
 
         /// <summary>
         /// Login Via Code.
@@ -58,9 +60,18 @@ namespace Mauidon.ViewModels
                 return;
             }
 
-            this.IsBusy = true;
-            (this.client, this.Account) = await this.Authorization.LoginWithCodeAsync(code);
-            this.IsBusy = false;
+            try
+            {
+                this.IsBusy = true;
+                (this.client, this.Account) = await this.Authorization.LoginWithCodeAsync(code);
+                this.IsBusy = false;
+            }
+            catch (Exception ex)
+            {
+                // If we can't show the auth screen, close the dialog and show the error.
+                this.Error.HandleError(ex);
+                await this.CloseDialogCommand.ExecuteAsync();
+            }
         }
 
         /// <summary>
@@ -80,8 +91,8 @@ namespace Mauidon.ViewModels
                 UserAuth = UserAuth.GenerateUserAuth(this.account.Id, this.client.AuthToken),
             });
             this.IsBusy = false;
-            this.Navigation.ReplaceMainPageInMainWindow(this.Services.GetService<MainTootPage>());
             await this.Navigation.PopModalPageInMainWindowAsync();
+            this.Navigation.ReplaceMainPageInMainWindow(this.Services.GetService<MainTootPage>());
         }
     }
 }
