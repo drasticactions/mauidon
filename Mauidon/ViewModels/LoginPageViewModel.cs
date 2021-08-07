@@ -3,6 +3,7 @@
 // </copyright>
 
 using Mauidon.Services;
+using Mauidon.Tools;
 using Microsoft.Maui.Controls;
 
 namespace Mauidon.ViewModels
@@ -21,9 +22,10 @@ namespace Mauidon.ViewModels
         public LoginPageViewModel(IServiceProvider services)
             : base(services)
         {
-            this.StartLoginCommand = new Command(
+            this.StartLoginCommand = new AsyncCommand(
                 async () => await this.ExecuteStartLoginCommand(),
-                () => !string.IsNullOrEmpty(this.ServerBaseUrl));
+                () => !string.IsNullOrEmpty(this.ServerBaseUrl),
+                this.Error);
         }
 
         /// <summary>
@@ -35,14 +37,14 @@ namespace Mauidon.ViewModels
             set
             {
                 this.SetProperty(ref this.serverBaseUrl, value);
-                this.StartLoginCommand?.ChangeCanExecute();
+                this.StartLoginCommand?.RaiseCanExecuteChanged();
             }
         }
 
         /// <summary>
         /// Gets or sets the Start Login Command.
         /// </summary>
-        public Command StartLoginCommand { get; set; }
+        public AsyncCommand StartLoginCommand { get; set; }
 
         private async Task ExecuteStartLoginCommand()
         {

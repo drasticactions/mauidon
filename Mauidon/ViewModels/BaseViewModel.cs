@@ -4,6 +4,7 @@
 
 using Mauidon.Context;
 using Mauidon.Services;
+using Mauidon.Tools;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.Controls;
 
@@ -25,7 +26,12 @@ namespace Mauidon.ViewModels
             this.Services = services;
             this.Navigation = services.GetService<INavigationService>();
             this.Authorization = services.GetService<IAuthorizationService>();
+            this.Error = services.GetService<IErrorHandlerService>();
             this.Database = services.GetService<IMastoContext>();
+            this.CloseDialogCommand = new AsyncCommand(
+               async () => await this.ExecuteCloseDialogCommand(),
+               null,
+               this.Error);
         }
 
         /// <summary>
@@ -48,7 +54,7 @@ namespace Mauidon.ViewModels
         /// <summary>
         /// Gets or sets the Close Dialog Command.
         /// </summary>
-        public Command CloseDialogCommand { get; set; }
+        public AsyncCommand CloseDialogCommand { get; set; }
 
         /// <summary>
         /// Gets the service provider collection.
@@ -64,6 +70,11 @@ namespace Mauidon.ViewModels
         /// Gets the authorization service.
         /// </summary>
         protected IAuthorizationService Authorization { get; private set; }
+
+        /// <summary>
+        /// Gets the error handler service.
+        /// </summary>
+        protected IErrorHandlerService Error { get; private set; }
 
         /// <summary>
         /// Gets the database service.
@@ -86,6 +97,11 @@ namespace Mauidon.ViewModels
         public virtual Task UnloadAsync()
         {
             return Task.CompletedTask;
+        }
+
+        private async Task ExecuteCloseDialogCommand()
+        {
+            await this.Navigation.PopModalPageInMainWindowAsync();
         }
     }
 }
