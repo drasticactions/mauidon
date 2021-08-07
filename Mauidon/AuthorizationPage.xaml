@@ -29,7 +29,7 @@
             <Image HeightRequest="100" HorizontalOptions="Center" Source="{Binding Account.AvatarUrl}" TranslationY="50" VerticalOptions="End" WidthRequest="100" />
             <StackLayout Grid.Row="1" Padding="0,50,0,00" HorizontalOptions="Center">
                 <Label Style="{StaticResource ProfileNameLabel}" Text="{Binding Account.DisplayName}" />
-                <Label Margin="0,-5" Style="{StaticResource ProfileTagLabel}" Text="{Binding Account.AccountName, Converter={StaticResource AddAtSignConverter}}" />
+                <Label Margin="0,-5" Style="{StaticResource ProfileTagLabel}" Text="{Binding Account.AccountName}" />
             </StackLayout>
             <Grid Grid.Row="2" Margin="0,30" ColumnSpacing="0" RowSpacing="0">
                 <Grid.ColumnDefinitions>
