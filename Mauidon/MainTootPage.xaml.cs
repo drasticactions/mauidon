@@ -2,6 +2,7 @@
 // Copyright (c) Drastic Actions. All rights reserved.
 // </copyright>
 
+using Mauidon.Tools;
 using Mauidon.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui;
@@ -26,6 +27,7 @@ namespace Mauidon
         {
             this.InitializeComponent();
             this.BindingContext = this.vm = services.GetService<HomeTootViewModel>();
+            this.vm?.RefreshFeed().FireAndForgetSafeAsync();
         }
     }
 }

@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:windows="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:local="clr-namespace:Mauidon"
+             xmlns:converters="using:Mauidon.Tools"
              x:Class="Mauidon.App"
              windows:Application.ImageDirectory="Assets">
     <Application.Resources>
@@ -10,6 +11,9 @@
                 <ResourceDictionary Source="Styles/DefaultTheme.xaml" />
                 <ResourceDictionary Source="Styles/LightTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <converters:AddAtSignConverter x:Key="AddAtSignConverter" />
+            <converters:CreatedTimeConverter x:Key="CreatedTimeConverter" />
+            <converters:ImageGalleryVisibilityConverter x:Key="ImageGalleryVisibilityConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>
