@@ -2,6 +2,7 @@
 // Copyright (c) Drastic Actions. All rights reserved.
 // </copyright>
 
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Essentials;
 
@@ -12,6 +13,17 @@ namespace Mauidon.Services
     /// </summary>
     public class NavigationService : INavigationService
     {
+        private IServiceProvider services;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NavigationService"/> class.
+        /// </summary>
+        /// <param name="services">IServiceProvider.</param>
+        public NavigationService(IServiceProvider services)
+        {
+            this.services = services;
+        }
+
         /// <inheritdoc/>
         public Task DisplayAlertAsync(string title, string message)
         {
@@ -57,6 +69,24 @@ namespace Mauidon.Services
         public Task PushModalPageInMainWindowAsync(Page page)
         {
             return this.PushModalPageInWindowAsync(page, this.GetMainWindow());
+        }
+
+        /// <inheritdoc/>
+        public void ResetToDefaultPage(Window window)
+        {
+            window.Page = this.GetDefaultPage();
+        }
+
+        /// <inheritdoc/>
+        public void ResetToDefaultPageInMainWindow()
+        {
+            this.ResetToDefaultPage(this.GetMainWindow());
+        }
+
+        /// <inheritdoc/>
+        public Page GetDefaultPage()
+        {
+            return this.services.GetService<MainTootPage>();
         }
 
         private Window GetMainWindow()

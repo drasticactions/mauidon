@@ -37,6 +37,7 @@ namespace Mauidon
                     services.AddTransient<LoginPage>();
                     services.AddTransient<AuthorizationPage>();
                     services.AddTransient<MainTootPage>();
+                    services.AddTransient<MainTabPage>();
                 })
                 .ConfigureFonts(fonts =>
                 {

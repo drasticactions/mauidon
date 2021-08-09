@@ -92,7 +92,7 @@ namespace Mauidon.ViewModels
             });
             this.IsBusy = false;
             await this.Navigation.PopModalPageInMainWindowAsync();
-            this.Navigation.ReplaceMainPageInMainWindow(this.Services.GetService<MainTootPage>());
+            this.Navigation.ResetToDefaultPageInMainWindow();
         }
     }
 }

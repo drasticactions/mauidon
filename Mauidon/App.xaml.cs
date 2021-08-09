@@ -48,7 +48,7 @@ namespace Mauidon
             var hasAccounts = this.db.HasAccount();
             if (hasAccounts)
             {
-                return new MainWindow(this.services.GetService<MainTootPage>());
+                return new MainWindow(this.navigation.GetDefaultPage());
             }
             else
             {

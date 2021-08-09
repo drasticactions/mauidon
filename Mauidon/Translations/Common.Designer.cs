@@ -70,6 +70,15 @@ namespace Mauidon.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Discover.
+        /// </summary>
+        internal static string DiscoverTitle {
+            get {
+                return ResourceManager.GetString("DiscoverTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An {0} has occured: {1} @ {2}.
         /// </summary>
         internal static string ErrorMessage {
@@ -106,6 +115,15 @@ namespace Mauidon.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        internal static string HomeTitle {
+            get {
+                return ResourceManager.GetString("HomeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         internal static string LoginButton {
@@ -115,11 +133,29 @@ namespace Mauidon.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Messages.
+        /// </summary>
+        internal static string MessagesTitle {
+            get {
+                return ResourceManager.GetString("MessagesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Account.
         /// </summary>
         internal static string NewAccount {
             get {
                 return ResourceManager.GetString("NewAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notifications.
+        /// </summary>
+        internal static string NotificationsTitle {
+            get {
+                return ResourceManager.GetString("NotificationsTitle", resourceCulture);
             }
         }
         

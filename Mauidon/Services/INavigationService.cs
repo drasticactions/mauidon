@@ -59,5 +59,22 @@ namespace Mauidon.Services
         /// <param name="window"><see cref="Window"/> with Modal to pop.</param>
         /// <returns><see cref="Task"/>.</returns>
         public Task PopModalPageInWindowAsync(Window window);
+
+        /// <summary>
+        /// Reset to default page.
+        /// </summary>
+        /// <param name="window">Window to set the default page.</param>
+        public void ResetToDefaultPage(Window window);
+
+        /// <summary>
+        /// Reset to default page in main window.
+        /// </summary>
+        public void ResetToDefaultPageInMainWindow();
+
+        /// <summary>
+        /// Gets the default page.
+        /// </summary>
+        /// <returns>The default page for the app.</returns>
+        public Page GetDefaultPage();
     }
 }
