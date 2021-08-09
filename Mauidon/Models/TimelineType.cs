@@ -23,5 +23,10 @@ namespace Mauidon
         /// List.
         /// </summary>
         List,
+
+        /// <summary>
+        /// User Profile.
+        /// </summary>
+        User,
     }
 }

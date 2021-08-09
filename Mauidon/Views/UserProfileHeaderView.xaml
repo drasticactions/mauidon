@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView x:Class="Mauidon.Views.UserProfileHeaderView"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Mauidon.Views"
+             xmlns:resources="clr-namespace:Mauidon.Translations"
+             x:Name="ProfilerHeader"
+             >
+    <Grid BindingContext="{x:Reference ProfilerHeader}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+        </Grid.RowDefinitions>
+        <Image Aspect="AspectFill" Source="{Binding Account.HeaderUrl}" />
+        <Image HeightRequest="100" HorizontalOptions="Center" Source="{Binding Account.AvatarUrl}" TranslationY="50" VerticalOptions="End" WidthRequest="100" />
+        <StackLayout Grid.Row="1" Padding="0,50,0,00" HorizontalOptions="Center">
+            <Label Style="{StaticResource ProfileNameLabel}" Text="{Binding Account.DisplayName}" />
+            <Label Margin="0,-5" Style="{StaticResource ProfileTagLabel}" Text="{Binding Account.AccountName, Converter={StaticResource AddAtSignConverter}}" />
+        </StackLayout>
+        <Grid Grid.Row="2" Margin="0,30" ColumnSpacing="0" RowSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackLayout>
+                <Label Style="{StaticResource StatsNumberLabel}" Text="{Binding Account.StatusesCount}" />
+                <Label Style="{StaticResource StatsCaptionLabel}" Text="{x:Static resources:Common.Status}" />
+            </StackLayout>
+
+            <StackLayout Grid.Column="1">
+                <Label Style="{StaticResource StatsNumberLabel}" Text="{Binding Account.FollowingCount}" />
+                <Label Style="{StaticResource StatsCaptionLabel}" Text="{x:Static resources:Common.Following}" />
+            </StackLayout>
+
+            <StackLayout Grid.Column="2">
+                <Label Style="{StaticResource StatsNumberLabel}" Text="{Binding Account.FollowersCount}" />
+                <Label Style="{StaticResource StatsCaptionLabel}" Text="{x:Static resources:Common.Followers}" />
+            </StackLayout>
+        </Grid>
+        <Label Margin="20,0" Grid.Row="3" Style="{StaticResource MainBodyLabel}" Text="{Binding Account.Note}" />
+    </Grid>
+</ContentView>

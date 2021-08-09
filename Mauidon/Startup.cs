@@ -32,12 +32,14 @@ namespace Mauidon
                     services.AddSingleton<IAuthorizationService, AuthorizationService>();
                     services.AddSingleton<IErrorHandlerService, ErrorHandlerService>();
                     services.AddTransient<HomeTootViewModel>();
+                    services.AddTransient<UserProfilePageViewModel>();
                     services.AddTransient<AuthorizationPageViewModel>();
                     services.AddTransient<LoginPageViewModel>();
                     services.AddTransient<LoginPage>();
                     services.AddTransient<AuthorizationPage>();
                     services.AddTransient<MainTootPage>();
                     services.AddTransient<MainTabPage>();
+                    services.AddTransient<UserProfilePage>();
                 })
                 .ConfigureFonts(fonts =>
                 {
