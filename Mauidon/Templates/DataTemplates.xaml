@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary x:Class="Mauidon.Templates.DataTemplates"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Mauidon.Templates">
+     <DataTemplate x:Key="TootTemplate">
+                <Grid Padding="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="5"/>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image VerticalOptions="Start" HeightRequest="50" Grid.Column="0" Source="{Binding Account.AvatarUrl}"/>
+                        <Grid x:Name="StatusGrid" Margin="0" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Padding="5,0,0,0" Text="{Binding Account.UserName}" MaxLines="1" LineBreakMode="TailTruncation" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Padding="0,0,5,0" HorizontalOptions="StartAndExpand" MaxLines="1" LineBreakMode="TailTruncation"  Text="{Binding Account.AccountName, Converter={StaticResource AddAtSignConverter}}" />
+                                <Label Grid.Column="2" Padding="5,0,5,0" HorizontalOptions="StartAndExpand" MaxLines="1" LineBreakMode="TailTruncation" Text="{Binding CreatedAt, Converter={StaticResource CreatedTimeConverter}}" />
+                            </Grid>
+                            <Grid Margin="5,0,0,0" Grid.Row="1">
+                                <Label TextType="Html" Text="{Binding Content}"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+</ResourceDictionary>

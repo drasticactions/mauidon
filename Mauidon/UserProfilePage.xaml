@@ -4,7 +4,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Mauidon"
              xmlns:views="clr-namespace:Mauidon.Views">
-    <StackLayout>
-        <views:UserProfileHeaderView Account="{Binding Account.Account}"/>
-    </StackLayout>
+    <CollectionView ItemTemplate="{StaticResource TootTemplate}" ItemsSource="{Binding Timeline}">
+        <CollectionView.Header>
+            <views:UserProfileHeaderView Account="{Binding Account.Account}"/>
+        </CollectionView.Header>
+    </CollectionView>
 </ContentPage>
