@@ -41,6 +41,6 @@
                 <Label Style="{StaticResource StatsCaptionLabel}" Text="{x:Static resources:Common.Followers}" />
             </StackLayout>
         </Grid>
-        <Label Margin="20,0" Grid.Row="3" Style="{StaticResource MainBodyLabel}" Text="{Binding Account.Note}" />
+        <Label TextType="Html" Margin="20,0" Grid.Row="3" Style="{StaticResource MainBodyLabel}" Text="{Binding Account.Note}" />
     </Grid>
 </ContentView>
