@@ -2,6 +2,7 @@
 <ResourceDictionary x:Class="Mauidon.Templates.DataTemplates"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Mauidon.Controls"
              xmlns:local="clr-namespace:Mauidon.Templates">
      <DataTemplate x:Key="TootTemplate">
                 <Grid Padding="10">
@@ -31,7 +32,7 @@
                                 <Label Grid.Column="2" Padding="5,0,5,0" HorizontalOptions="StartAndExpand" MaxLines="1" LineBreakMode="TailTruncation" Text="{Binding CreatedAt, Converter={StaticResource CreatedTimeConverter}}" />
                             </Grid>
                             <Grid Margin="5,0,0,0" Grid.Row="1">
-                                <Label TextType="Html" Text="{Binding Content}"/>
+                            <controls:HtmlLabel Text="{Binding Content}"/>
                             </Grid>
                         </Grid>
                     </Grid>

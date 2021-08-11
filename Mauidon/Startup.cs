@@ -3,6 +3,7 @@
 // </copyright>
 
 using Mauidon.Context;
+using Mauidon.Controls;
 using Mauidon.Services;
 using Mauidon.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
@@ -40,6 +41,11 @@ namespace Mauidon
                     services.AddTransient<MainTootPage>();
                     services.AddTransient<MainTabPage>();
                     services.AddTransient<UserProfilePage>();
+                })
+                .ConfigureMauiHandlers(handlers => {
+#if __ANDROID__
+                handlers.AddHandler(typeof(HtmlLabel), typeof(Controls.Droid.HtmlLabelHandler));
+#endif
                 })
                 .ConfigureFonts(fonts =>
                 {
