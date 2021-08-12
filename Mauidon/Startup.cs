@@ -45,7 +45,10 @@ namespace Mauidon
                 .ConfigureMauiHandlers(handlers => {
 #if __ANDROID__
                 handlers.AddHandler(typeof(HtmlLabel), typeof(Controls.Droid.HtmlLabelHandler));
+#elif __IOS__
+                handlers.AddHandler(typeof(HtmlLabel), typeof(Controls.iOS.HtmlLabelHandler));
 #endif
+
                 })
                 .ConfigureFonts(fonts =>
                 {
