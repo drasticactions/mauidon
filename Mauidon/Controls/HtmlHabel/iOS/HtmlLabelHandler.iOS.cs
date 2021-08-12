@@ -47,7 +47,6 @@ namespace Mauidon.Controls.iOS
         {
         }
 
-
         /// <summary>
         /// Map HTML to text fields.
         /// </summary>
