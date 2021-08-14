@@ -6,7 +6,7 @@
              xmlns:views="clr-namespace:Mauidon.Views">
     <CollectionView ItemTemplate="{StaticResource TootTemplate}" ItemsSource="{Binding Timeline}">
         <CollectionView.Header>
-            <views:UserProfileHeaderView Account="{Binding Account.Account}"/>
+            <views:UserProfileHeaderView Account="{Binding UserAccount}"/>
         </CollectionView.Header>
     </CollectionView>
 </ContentPage>

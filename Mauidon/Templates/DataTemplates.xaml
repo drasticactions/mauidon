@@ -5,14 +5,18 @@
              xmlns:controls="clr-namespace:Mauidon.Controls"
              xmlns:local="clr-namespace:Mauidon.Templates">
     <DataTemplate x:Key="TootTemplate">
-        <VerticalStackLayout Padding="10">
+        <VerticalStackLayout x:Name="StatusGrid" Padding="10">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Image VerticalOptions="Start" HeightRequest="50" Grid.Column="0" Source="{Binding Account.AvatarUrl}"/>
-                <StackLayout VerticalOptions="Start" Padding="10,0,0,0" x:Name="StatusGrid" GridLayout.Column="1" Spacing="5">
+                <Image  VerticalOptions="Start" HeightRequest="50" Grid.Column="0" Source="{Binding Account.AvatarUrl}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Parent.BindingContext.ViewProfileCommand,Source={x:Reference StatusGrid}}" CommandParameter="{Binding Account}" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <StackLayout VerticalOptions="Start" Padding="10,0,0,0" GridLayout.Column="1" Spacing="5">
                     <HorizontalStackLayout>
                         <Label FontAttributes="Bold" Text="{Binding Account.UserName}" MaxLines="1" LineBreakMode="TailTruncation" />
                         <Label Grid.Column="1" Padding="0,0,5,0" HorizontalOptions="StartAndExpand" MaxLines="1" LineBreakMode="TailTruncation"  Text="{Binding Account.AccountName, Converter={StaticResource AddAtSignConverter}}" />

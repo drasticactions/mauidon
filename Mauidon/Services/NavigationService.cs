@@ -89,6 +89,18 @@ namespace Mauidon.Services
             return this.services.GetService<MainFlyoutPage>();
         }
 
+        /// <inheritdoc/>
+        public Task PushPageInWindowAsync(Page page, Window window)
+        {
+            return window.Navigation.PushAsync(page);
+        }
+
+        /// <inheritdoc/>
+        public Task PushPageInMainWindowAsync(Page page)
+        {
+            return this.PushPageInWindowAsync(page, this.GetMainWindow());
+        }
+
         private Window GetMainWindow()
         {
             return App.Current.Windows[0];

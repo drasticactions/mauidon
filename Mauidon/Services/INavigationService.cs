@@ -61,6 +61,21 @@ namespace Mauidon.Services
         public Task PopModalPageInWindowAsync(Window window);
 
         /// <summary>
+        /// Push Page In Window.
+        /// </summary>
+        /// <param name="page"><see cref="Page"/> to navigate to.</param>
+        /// <param name="window"><see cref="Window"/>.</param>
+        /// <returns><see cref="Task"/>.</returns>
+        public Task PushPageInWindowAsync(Page page, Window window);
+
+        /// <summary>
+        /// Push Page In Main Window.
+        /// </summary>
+        /// <param name="page"><see cref="Page"/> to navigate to.</param>
+        /// <returns><see cref="Task"/>.</returns>
+        public Task PushPageInMainWindowAsync(Page page);
+
+        /// <summary>
         /// Reset to default page.
         /// </summary>
         /// <param name="window">Window to set the default page.</param>

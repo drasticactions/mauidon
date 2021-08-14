@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mastonet.Entities;
 
 namespace Mauidon.ViewModels
 {
@@ -22,6 +23,17 @@ namespace Mauidon.ViewModels
         public UserProfilePageViewModel(IServiceProvider service)
             : base(service, TimelineType.User)
         {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UserProfilePageViewModel"/> class.
+        /// </summary>
+        /// <param name="userAccount">User Account.</param>
+        /// <param name="service">IServiceProvider.</param>
+        public UserProfilePageViewModel(Account userAccount, IServiceProvider service)
+            : base(service, TimelineType.User)
+        {
+            this.UserAccount = userAccount;
         }
     }
 }

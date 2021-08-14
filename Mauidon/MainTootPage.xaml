@@ -2,11 +2,17 @@
 <ContentPage x:Class="Mauidon.MainTootPage"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Title="Main Toots"
+             NavigationPage.HasNavigationBar="False"
              xmlns:local="clr-namespace:Mauidon">
-    <CollectionView 
+    <VerticalStackLayout>
+        <!--<VerticalStackLayout HeightRequest="40">
+            <HorizontalStackLayout>
+                <Image HeightRequest="35" WidthRequest="35" Source="{Binding Account.Account.AvatarUrl}" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>-->
+        <CollectionView 
         ItemTemplate="{StaticResource TootTemplate}"
         ItemsSource="{Binding Timeline}">
-       
-    </CollectionView>
+        </CollectionView>
+    </VerticalStackLayout>
 </ContentPage>

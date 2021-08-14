@@ -2,6 +2,7 @@
 // Copyright (c) Drastic Actions. All rights reserved.
 // </copyright>
 
+using Mastonet.Entities;
 using Mauidon.Tools;
 using Mauidon.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +28,18 @@ namespace Mauidon
         {
             this.InitializeComponent();
             this.BindingContext = this.vm = services.GetService<UserProfilePageViewModel>();
+            this.vm?.RefreshFeed().FireAndForgetSafeAsync();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UserProfilePage"/> class.
+        /// </summary>
+        /// <param name="userAccount">User Account.</param>
+        /// <param name="services">IServiceProvider.</param>
+        public UserProfilePage(Account userAccount, IServiceProvider services)
+        {
+            this.InitializeComponent();
+            this.BindingContext = this.vm = new UserProfilePageViewModel(userAccount, services);
             this.vm?.RefreshFeed().FireAndForgetSafeAsync();
         }
     }
