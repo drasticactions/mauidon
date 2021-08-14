@@ -39,6 +39,7 @@ namespace Mauidon
                     services.AddTransient<LoginPage>();
                     services.AddTransient<AuthorizationPage>();
                     services.AddTransient<MainTootPage>();
+                    services.AddTransient<MainFlyoutPage>();
                     services.AddTransient<MainTabPage>();
                     services.AddTransient<UserProfilePage>();
                 })

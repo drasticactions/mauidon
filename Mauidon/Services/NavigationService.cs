@@ -86,7 +86,7 @@ namespace Mauidon.Services
         /// <inheritdoc/>
         public Page GetDefaultPage()
         {
-            return this.services.GetService<UserProfilePage>();
+            return this.services.GetService<MainFlyoutPage>();
         }
 
         private Window GetMainWindow()
