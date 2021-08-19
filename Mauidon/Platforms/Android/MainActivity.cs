@@ -44,7 +44,7 @@ namespace Mauidon
                 base.OnCreate(savedInstanceState);
 
                 // Convert Android.Net.Url to Uri
-                var uri = new Uri(this.Intent.Data.ToString());
+                var uri = new System.Uri(this.Intent.Data.ToString());
 
                 // Load redirectUrl page
                 var app = MauiApplication.Current.Application as App;

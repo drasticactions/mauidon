@@ -20,7 +20,7 @@
                 <Label Margin="0,-5" Style="{StaticResource ProfileTagLabel}" Text="{Binding Account.AccountName, Converter={StaticResource AddAtSignConverter}}" />
             </StackLayout>
         </Grid>
-        <controls:HtmlLabel Margin="15,0" Style="{StaticResource MainBodyLabel}" Text="{Binding Account.Note}" />
+        <Label Margin="15,0" TextType="Html" Style="{StaticResource MainBodyLabel}" Text="{Binding Account.Note}" />
         <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Grid.Row="2" Spacing="50" Margin="0,10">
             <StackLayout>
                 <Label Style="{StaticResource StatsNumberLabel}" Text="{Binding Account.StatusesCount}" />

@@ -2,6 +2,8 @@
 // Copyright (c) Drastic Actions. All rights reserved.
 // </copyright>
 
+using System;
+using System.Threading.Tasks;
 using Mauidon.Context;
 using Mauidon.Services;
 using Mauidon.Tools;

@@ -2,6 +2,7 @@
 // Copyright (c) Drastic Actions. All rights reserved.
 // </copyright>
 
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Microsoft.Maui.Controls;
 

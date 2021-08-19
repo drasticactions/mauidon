@@ -21,7 +21,7 @@
                         <Label FontAttributes="Bold" Text="{Binding Account.UserName}" MaxLines="1" LineBreakMode="TailTruncation" />
                         <Label Grid.Column="1" Padding="0,0,5,0" HorizontalOptions="StartAndExpand" MaxLines="1" LineBreakMode="TailTruncation"  Text="{Binding Account.AccountName, Converter={StaticResource AddAtSignConverter}}" />
                     </HorizontalStackLayout>
-                    <controls:HtmlLabel Text="{Binding Content}"/>
+                    <Label TextType="Html" Text="{Binding Content}"/>
                     <Label FontAttributes="Bold" HorizontalOptions="StartAndExpand" MaxLines="1" LineBreakMode="TailTruncation" Text="{Binding CreatedAt, Converter={StaticResource CreatedTimeConverter}}" />
                 </StackLayout>
             </Grid>

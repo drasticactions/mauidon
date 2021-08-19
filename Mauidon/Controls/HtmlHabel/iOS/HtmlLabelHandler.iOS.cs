@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CoreGraphics;
 using Foundation;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
