@@ -16,14 +16,14 @@
                         <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Parent.BindingContext.ViewProfileCommand,Source={x:Reference StatusGrid}}" CommandParameter="{Binding Account}" />
                     </Image.GestureRecognizers>
                 </Image>
-                <StackLayout VerticalOptions="Start" Padding="10,0,0,0" GridLayout.Column="1" Spacing="5">
+                <VerticalStackLayout VerticalOptions="Start" Padding="10,0,0,0" GridLayout.Column="1" Spacing="5">
                     <HorizontalStackLayout>
                         <Label FontAttributes="Bold" Text="{Binding Account.UserName}" MaxLines="1" LineBreakMode="TailTruncation" />
                         <Label Grid.Column="1" Padding="0,0,5,0" HorizontalOptions="StartAndExpand" MaxLines="1" LineBreakMode="TailTruncation"  Text="{Binding Account.AccountName, Converter={StaticResource AddAtSignConverter}}" />
                     </HorizontalStackLayout>
                     <Label TextType="Html" Text="{Binding Content}"/>
                     <Label FontAttributes="Bold" HorizontalOptions="StartAndExpand" MaxLines="1" LineBreakMode="TailTruncation" Text="{Binding CreatedAt, Converter={StaticResource CreatedTimeConverter}}" />
-                </StackLayout>
+                </VerticalStackLayout>
             </Grid>
         </VerticalStackLayout>
     </DataTemplate>
