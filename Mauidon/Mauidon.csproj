@@ -3,11 +3,13 @@
 	<PropertyGroup>
 		<!-- iOS, Android, MacCatalyst -->
 		<TargetFrameworks>net6.0-ios;net6.0-android;net6.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<RootNamespace>Mauidon</RootNamespace>
-
+		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
+		
 		<!-- Display name -->
 		<ApplicationTitle>Mauidon</ApplicationTitle>
 
@@ -93,6 +95,21 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+
+	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
+		<!-- Required - WinUI does not yet have buildTransitive for everything -->
+		<PackageReference Include="Microsoft.ProjectReunion" Version="0.8.1" />
+		<PackageReference Include="Microsoft.ProjectReunion.Foundation" Version="0.8.1" />
+		<PackageReference Include="Microsoft.ProjectReunion.WinUI" Version="0.8.1" />
+		<PackageReference Include="Microsoft.ProjectReunion.InteractiveExperiences" Version="0.8.1" NoWarn="NU1701" />
+	</ItemGroup>
+
+	<PropertyGroup>
+		<!-- Required - WinUI can't deploy in a multi-targeting environment -->
+		<AppxPackageRecipe>bin\$(Configuration)\net6.0-windows10.0.19041\win-x64\NewMauiTest.build.appxrecipe</AppxPackageRecipe>
+		<RuntimeIdentifier Condition="$(TargetFramework.Contains('-windows'))">win-x64</RuntimeIdentifier>
+	</PropertyGroup>
+
 	<PropertyGroup>
 		<InvariantGlobalization Condition="$(TargetFramework.Contains('-maccatalyst'))">true</InvariantGlobalization>
 		<RuntimeIdentifier Condition="$(TargetFramework.Contains('-ios'))">iossimulator-x64</RuntimeIdentifier>
@@ -102,4 +119,5 @@
 	<ItemGroup>
 		<AdditionalFiles Include="stylecop.json" />
 	</ItemGroup>
+	
 </Project>

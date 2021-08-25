@@ -106,6 +106,10 @@ namespace Mauidon.Context
                     case Device.Android:
                         this.databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), DatabaseName);
                         break;
+                    case Device.UWP:
+                    case Device.WPF:
+                        this.databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DatabaseName);
+                        break;
                     default:
                         throw new NotImplementedException("Platform not supported");
                 }

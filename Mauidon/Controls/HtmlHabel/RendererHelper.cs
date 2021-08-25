@@ -174,7 +174,7 @@ namespace Mauidon.Controls
         /// <param name="color">Color to add to text.</param>
         public void AddTextColorStyle(Color color)
         {
-            if (color.IsDefault())
+            if (Microsoft.Maui.Controls.ColorExtensions.IsDefault(color))
             {
                 return;
             }
