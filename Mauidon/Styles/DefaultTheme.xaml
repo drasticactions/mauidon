@@ -35,6 +35,7 @@
     <Style x:Key="StatsNumberLabel" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource HeaderTextColor}" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="FontFamily" Value="{StaticResource LightFontFamily}" />
         <Setter Property="FontSize" Value="{StaticResource StatsNumberFontSize}" />
     </Style>
@@ -43,6 +44,7 @@
         <Setter Property="TextColor" Value="{StaticResource BodyTextColor}" />
         <Setter Property="Margin" Value="0,-5,0,0" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="FontFamily" Value="{StaticResource LightFontFamily}" />
         <Setter Property="FontSize" Value="{StaticResource StatsCaptionFontSize}" />
     </Style>
