@@ -9,7 +9,7 @@ namespace Mauidon
     /// Main Application.
     /// </summary>
     [Application]
-    public class MainApplication : MauiApplication<Startup>
+    public class MainApplication : MauiApplication
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MainApplication"/> class.
@@ -20,5 +20,11 @@ namespace Mauidon
             : base(handle, ownership)
         {
         }
+
+        /// <summary>
+        /// Create Maui App.
+        /// </summary>
+        /// <returns>Maui App.</returns>
+        protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
     }
 }

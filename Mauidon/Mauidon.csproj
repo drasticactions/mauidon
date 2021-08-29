@@ -45,7 +45,7 @@
 	<ItemGroup>
 	  <PackageReference Include="LiteDB" Version="5.0.11" />
 	  <PackageReference Include="Mastonet" Version="1.8.2" />
-	  <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="6.0.0-preview.6.21352.12" />
+	  <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="6.0.0-rc.1.21423.9" />
 	  <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.354">
 	    <PrivateAssets>all</PrivateAssets>
 	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

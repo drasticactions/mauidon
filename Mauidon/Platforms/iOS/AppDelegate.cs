@@ -13,7 +13,7 @@ namespace Mauidon
     /// App Delegate.
     /// </summary>
     [Register("AppDelegate")]
-    public class AppDelegate : MauiUIApplicationDelegate<Startup>
+    public class AppDelegate : MauiUIApplicationDelegate
     {
         /// <inheritdoc/>
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
@@ -30,5 +30,8 @@ namespace Mauidon
             mapp.ShowAuthorizationModalAsync(test);
             return true;
         }
+
+        /// <inheritdoc/>
+        protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
     }
 }
