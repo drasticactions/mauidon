@@ -87,7 +87,15 @@ namespace Mauidon.ViewModels
                     this.Timeline = await this.Account.Client.GetHomeTimeline();
                     break;
                 case TimelineType.User:
-                    this.Timeline = await this.Account.Client.GetAccountStatuses(this.Account.AccountId);
+                    if (this.UserAccount != null)
+                    {
+                        this.Timeline = await this.Account.Client.GetAccountStatuses(this.UserAccount.Id);
+                    }
+                    else
+                    {
+                        this.Timeline = await this.Account.Client.GetAccountStatuses(this.Account.AccountId);
+                    }
+
                     break;
             }
 

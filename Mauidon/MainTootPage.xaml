@@ -4,15 +4,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              NavigationPage.HasNavigationBar="False"
              xmlns:local="clr-namespace:Mauidon">
-    <VerticalStackLayout>
-        <!--<VerticalStackLayout HeightRequest="40">
-            <HorizontalStackLayout>
-                <Image HeightRequest="35" WidthRequest="35" Source="{Binding Account.Account.AvatarUrl}" />
-            </HorizontalStackLayout>
-        </VerticalStackLayout>-->
-        <CollectionView 
+    <CollectionView
         ItemTemplate="{StaticResource TootTemplate}"
         ItemsSource="{Binding Timeline}">
-        </CollectionView>
-    </VerticalStackLayout>
+    </CollectionView>
 </ContentPage>
