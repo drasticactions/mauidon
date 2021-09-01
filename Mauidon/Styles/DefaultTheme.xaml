@@ -56,6 +56,12 @@
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
 
+    <Style x:Key="StatusBarButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="FontSize" Value="50" />
+        <Setter Property="BorderColor" Value="Transparent" />
+    </Style>
+
     <Style x:Key="FollowButton" TargetType="Button">
         <Setter Property="BackgroundColor" Value="{StaticResource ButtonBackgroundColor}" />
         <Setter Property="TextColor" Value="White" />

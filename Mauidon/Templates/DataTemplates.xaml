@@ -2,29 +2,37 @@
 <ResourceDictionary x:Class="Mauidon.Templates.DataTemplates"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:Mauidon.Controls"
+             xmlns:fontawesome="clr-namespace:FontAwesome"
              xmlns:local="clr-namespace:Mauidon.Templates">
     <DataTemplate x:Key="TootTemplate">
-        <VerticalStackLayout x:Name="StatusGrid" Padding="10">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Image  VerticalOptions="Start" HeightRequest="50" Grid.Column="0" Source="{Binding Account.AvatarUrl}">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Parent.BindingContext.ViewProfileCommand,Source={x:Reference StatusGrid}}" CommandParameter="{Binding Account}" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <VerticalStackLayout VerticalOptions="Start" Padding="10,0,0,0" GridLayout.Column="1" Spacing="5">
-                    <HorizontalStackLayout>
-                        <Label FontAttributes="Bold" Text="{Binding Account.UserName}" MaxLines="1" LineBreakMode="TailTruncation" />
-                        <Label Grid.Column="1" Padding="0,0,5,0" HorizontalOptions="StartAndExpand" MaxLines="1" LineBreakMode="TailTruncation"  Text="{Binding Account.AccountName, Converter={StaticResource AddAtSignConverter}}" />
-                    </HorizontalStackLayout>
-                    <Label TextType="Html" Text="{Binding Content}"/>
-                    <Label FontAttributes="Bold" HorizontalOptions="StartAndExpand" MaxLines="1" LineBreakMode="TailTruncation" Text="{Binding CreatedAt, Converter={StaticResource CreatedTimeConverter}}" />
-                </VerticalStackLayout>
-            </Grid>
-        </VerticalStackLayout>
+        <Grid x:Name="StatusGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image  VerticalOptions="Start" HeightRequest="50" Grid.Column="0" Source="{Binding Account.AvatarUrl}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Parent.BindingContext.ViewProfileCommand,Source={x:Reference StatusGrid}}" CommandParameter="{Binding Account}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <VerticalStackLayout VerticalOptions="Start" Padding="10,0,0,0" GridLayout.Column="1" Spacing="5">
+                <HorizontalStackLayout>
+                    <Label FontAttributes="Bold" Text="{Binding Account.UserName}" MaxLines="1" LineBreakMode="TailTruncation" />
+                    <Label Grid.Column="1" Padding="0,0,5,0" HorizontalOptions="StartAndExpand" MaxLines="1" LineBreakMode="TailTruncation"  Text="{Binding Account.AccountName, Converter={StaticResource AddAtSignConverter}}" />
+                </HorizontalStackLayout>
+                <Label TextType="Html" Text="{Binding Content}"/>
+                <Label FontAttributes="Bold" HorizontalOptions="StartAndExpand" MaxLines="1" LineBreakMode="TailTruncation" Text="{Binding CreatedAt, Converter={StaticResource CreatedTimeConverter}}" />
+                <HorizontalStackLayout HorizontalOptions="FillAndExpand" Spacing="10">
+                    <Label  FontFamily="FontAwesomeRegular"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Comment}"  />
+                    <Label  FontFamily="FontAwesomeSolid"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Retweet}"  />
+                    <Label  FontFamily="FontAwesomeRegular"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Heart}"  />
+                    <Label  FontFamily="FontAwesomeSolid"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.ExternalLinkAlt}"  />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Grid>
     </DataTemplate>
 </ResourceDictionary>
