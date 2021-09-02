@@ -25,7 +25,7 @@ namespace Mauidon
         {
             this.Title = "Mauidon";
             this.Flyout = new ContentPage() { Title = "Mauidon" };
-            this.Detail = new NavigationPage(services.GetService<MainTootPage>());
+            this.Detail = new NavigationPage(services.GetService<MainTabPage>());
         }
     }
 }

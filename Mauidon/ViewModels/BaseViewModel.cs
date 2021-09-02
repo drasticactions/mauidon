@@ -18,6 +18,7 @@ namespace Mauidon.ViewModels
     public abstract class BaseViewModel : ExtendedBindableObject
     {
         private bool isBusy;
+        private string title;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseViewModel"/> class.
@@ -50,6 +51,23 @@ namespace Mauidon.ViewModels
             {
                 this.isBusy = value;
                 this.OnPropertyChanged("IsBusy");
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the page title.
+        /// </summary>
+        public string Title
+        {
+            get
+            {
+                return this.title;
+            }
+
+            set
+            {
+                this.title = value;
+                this.OnPropertyChanged("Title");
             }
         }
 
@@ -90,6 +108,15 @@ namespace Mauidon.ViewModels
         public virtual Task LoadAsync()
         {
             return Task.CompletedTask;
+        }
+
+        /// <summary>
+        /// Sets title for page.
+        /// </summary>
+        /// <param name="title">The Title.</param>
+        public virtual void SetTitle(string title = "")
+        {
+            this.Title = title;
         }
 
         /// <summary>

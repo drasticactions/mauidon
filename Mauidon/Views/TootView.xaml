@@ -15,23 +15,26 @@
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Parent.BindingContext.ViewProfileCommand,Source={x:Reference StatusGrid}}" CommandParameter="{Binding Account}" />
                 </Image.GestureRecognizers>
             </Image>
-            <VerticalStackLayout VerticalOptions="Start" Padding="10,0,0,0" GridLayout.Column="1" Spacing="5">
+            <VerticalStackLayout VerticalOptions="Start" Padding="10,0,10,0" GridLayout.Column="1" Spacing="5">
                 <HorizontalStackLayout>
                     <Label FontAttributes="Bold" Text="{Binding Account.UserName}" MaxLines="1" LineBreakMode="TailTruncation" />
                     <Label Grid.Column="1" Padding="0,0,5,0" HorizontalOptions="StartAndExpand" MaxLines="1" LineBreakMode="TailTruncation"  Text="{Binding Account.AccountName, Converter={StaticResource AddAtSignConverter}}" />
                 </HorizontalStackLayout>
                 <Label TextType="Html" Text="{Binding Content}"/>
                 <Label FontAttributes="Bold" HorizontalOptions="StartAndExpand" MaxLines="1" LineBreakMode="TailTruncation" Text="{Binding CreatedAt, Converter={StaticResource CreatedTimeConverter}}" />
-                <FlexLayout HeightRequest="25" Direction="Row" AlignItems="Center" JustifyContent="SpaceEvenly">
+                <Grid ColumnDefinitions="*,*,*,*">
                     <Label  FontFamily="FontAwesomeRegular"
                             Text="{x:Static fontawesome:FontAwesomeIcons.Comment}"  />
                     <Label  FontFamily="FontAwesomeSolid"
+                            Grid.Column="1"
                             Text="{x:Static fontawesome:FontAwesomeIcons.Retweet}"  />
                     <Label  FontFamily="FontAwesomeRegular"
+                            Grid.Column="2"
                             Text="{x:Static fontawesome:FontAwesomeIcons.Heart}"  />
                     <Label  FontFamily="FontAwesomeSolid"
+                            Grid.Column="3"
                             Text="{x:Static fontawesome:FontAwesomeIcons.ExternalLinkAlt}"  />
-                </FlexLayout>
+                </Grid>
             </VerticalStackLayout>
         </Grid>
     </ContentView.Content>

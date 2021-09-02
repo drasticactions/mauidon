@@ -102,6 +102,32 @@ namespace Mauidon.ViewModels
             this.IsBusy = false;
         }
 
+        /// <inheritdoc/>
+        public override void SetTitle(string title = "")
+        {
+            if (string.IsNullOrEmpty(title))
+            {
+                base.SetTitle(title);
+                return;
+            }
+
+            switch (this.timelineType)
+            {
+                case TimelineType.Public:
+                    break;
+                case TimelineType.Home:
+                    this.Title = Translations.Common.HomeTitle;
+                    break;
+                case TimelineType.List:
+                    break;
+                case TimelineType.User:
+                    this.Title = this.UserAccount.DisplayName;
+                    break;
+                default:
+                    break;
+            }
+        }
+
         private Task ExecuteViewProfileCommand(Account account)
         {
             return this.Navigation.PushModalPageInMainWindowAsync(new UserProfilePage(account, this.Services));

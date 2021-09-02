@@ -41,7 +41,7 @@ namespace Mauidon
             builder.Services.AddTransient<MainFlyoutPage>();
             builder.Services.AddTransient<MainTabPage>();
             builder.Services.AddTransient<UserProfilePage>();
-
+            builder.Services.AddTransient<SettingsPage>();
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
