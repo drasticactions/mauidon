@@ -34,6 +34,7 @@ namespace Mauidon
             builder.Services.AddTransient<HomeTootViewModel>();
             builder.Services.AddTransient<UserProfilePageViewModel>();
             builder.Services.AddTransient<AuthorizationPageViewModel>();
+            builder.Services.AddTransient<SettingsPageViewModel>();
             builder.Services.AddTransient<LoginPageViewModel>();
             builder.Services.AddTransient<LoginPage>();
             builder.Services.AddTransient<AuthorizationPage>();

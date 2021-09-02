@@ -157,4 +157,7 @@
   <data name="Status" xml:space="preserve">
     <value>ステータス</value>
   </data>
+  <data name="Toot" xml:space="preserve">
+    <value>トゥート</value>
+  </data>
 </root>

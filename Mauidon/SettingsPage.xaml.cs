@@ -1,20 +1,33 @@
-﻿using Microsoft.Maui;
+﻿// <copyright file="SettingsPage.xaml.cs" company="Drastic Actions">
+// Copyright (c) Drastic Actions. All rights reserved.
+// </copyright>
+
+using System;
+using Mauidon.Tools;
+using Mauidon.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Xaml;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Mauidon
 {
+    /// <summary>
+    /// Settings Page.
+    /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingsPage : ContentPage
     {
-        public SettingsPage()
+        private readonly SettingsPageViewModel vm;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SettingsPage"/> class.
+        /// </summary>
+        /// <param name="services">IServiceProvider.</param>
+        public SettingsPage(IServiceProvider services)
         {
-            InitializeComponent();
+            this.InitializeComponent();
+            this.BindingContext = this.vm = services.GetService<SettingsPageViewModel>();
         }
     }
 }

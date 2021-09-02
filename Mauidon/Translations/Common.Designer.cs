@@ -176,5 +176,14 @@ namespace Mauidon.Translations {
                 return ResourceManager.GetString("Status", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toot.
+        /// </summary>
+        internal static string Toot {
+            get {
+                return ResourceManager.GetString("Toot", resourceCulture);
+            }
+        }
     }
 }
